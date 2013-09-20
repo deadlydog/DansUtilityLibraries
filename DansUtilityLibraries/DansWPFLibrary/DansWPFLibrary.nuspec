@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DansUtilityLibraries.WpfLibrary</id>
+    <version>$version$</version>
+    <title>DansUtilityLibraries.WpfLibrary</title>
+    <authors>Daniel Schroeder</authors>
+    <owners>Daniel Schroeder</owners>
+    <licenseUrl>https://dansutilitylibraries.codeplex.com/license</licenseUrl>
+    <projectUrl>https://dansutilitylibraries.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A collection of WPF code.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>Dans Wpf Sharp Library Dan's WPF Libraries</tags>
+  </metadata>
+</package>
