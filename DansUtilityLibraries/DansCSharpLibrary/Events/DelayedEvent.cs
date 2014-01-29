@@ -31,6 +31,16 @@ namespace DansCSharpLibrary.Events
 		private Timer _timer = null;
 
 		/// <summary>
+		/// The last object that requested the event to fire.
+		/// </summary>
+		private object _sender = null;
+
+		/// <summary>
+		/// The arguments to pass the to the event handler.
+		/// </summary>
+		private EventArgs _eventArgs = EventArgs.Empty;
+
+		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="defaultDelay">How long to wait before firing the event.</param>
@@ -50,22 +60,34 @@ namespace DansCSharpLibrary.Events
 		private void _timer_Elapsed(object state)
 		{
 			// Fire the event.
-			EventFired(null, EventArgs.Empty);
+			EventFired(_sender, _eventArgs);
+
+			// Reset the event data.
+			_sender = null;
+			_eventArgs = EventArgs.Empty;
 		}
 
 		/// <summary>
 		/// Triggers the event to fire.
 		/// <para>The event will not fire until the Delay has elapsed since the last time this function was called (i.e. each time this function is called, the delay timer is reset).
-		/// Because of this, if FireEvent() is contantly called without the Delay timespan elapsing between calls, the event potentially may never fire. </para>
+		/// Because of this, if FireEvent() is constantly called without the Delay timespan elapsing between calls, the event potentially may never fire.</para>
 		/// <para>If this is called multiple times within the Delay timespan, it will only fire once.</para>
+		/// <para>Only the Sender and EventArgs of the last call to this function will be passed to the event handlers.</para>
 		/// </summary>
+		/// <param name="sender">The object that triggered the event.</param>
+		/// <param name="eventArgs">The <see cref="EventArgs" /> instance containing the event data to pass to the event handlers.</param>
 		/// <param name="delayOverride">How long to wait before firing the event.
 		/// <para>Leave this null to use the DefaultDelay.</para>
 		/// <para>Use TimeSpan.Zero to have the event fire immediately.</para></param>
-		public void FireEvent(TimeSpan? delayOverride = null)
+		public void FireEvent(object sender = null, EventArgs eventArgs = null, TimeSpan? delayOverride = null)
 		{
+			// If the Timer hasn't been initialized, just exit without doing anything.
 			if (_timer == null)
 				return;
+
+			// Save the sender and event arguments to pass to the event handlers when we do actually fire the event.
+			_sender = sender;
+			_eventArgs = eventArgs ?? EventArgs.Empty;
 
 			// Reset our timer to fire the event after the specified wait period is over.
 			_timer.Change(delayOverride ?? DefaultDelay, TimeSpan.FromMilliseconds(Timeout.Infinite));
@@ -78,6 +100,9 @@ namespace DansCSharpLibrary.Events
 		{
 			if (_timer != null)
 				_timer.Dispose();
+
+			_sender = null;
+			_eventArgs = EventArgs.Empty;
 
 			EventFired = null;
 		}
