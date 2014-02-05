@@ -99,7 +99,10 @@ namespace DansCSharpLibrary.Events
 		public void Dispose()
 		{
 			if (_timer != null)
+			{
 				_timer.Dispose();
+				_timer = null;
+			}
 
 			_sender = null;
 			_eventArgs = EventArgs.Empty;
