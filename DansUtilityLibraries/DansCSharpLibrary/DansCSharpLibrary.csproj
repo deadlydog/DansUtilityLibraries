@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\DansCSharpLibrary.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DansCSharpLibraryStronglyNamedKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +58,7 @@
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DansCSharpLibraryStronglyNamedKey.snk" />
     <None Include="packages.config" />
     <None Include="PostBuildScripts\BuildNewPackage-RanAutomatically.ps1" />
     <None Include="PostBuildScripts\New-NuGetPackage.ps1" />
