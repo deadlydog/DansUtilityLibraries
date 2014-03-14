@@ -13,6 +13,9 @@ namespace DansCSharpLibrary.Comparers
 	{
 		public bool Equals(string x, string y)
 		{
+			if (x == null || y == null)
+				return x == null && y == null;
+
 			return x.Equals(y, StringComparison.InvariantCultureIgnoreCase);
 		}
 
