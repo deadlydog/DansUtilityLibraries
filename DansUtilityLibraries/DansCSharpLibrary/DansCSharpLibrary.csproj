@@ -55,15 +55,14 @@
     <Compile Include="Comparers\StringComparerIgnoreCase.cs" />
     <Compile Include="Events\DelayedEvent.cs" />
     <Compile Include="Exceptions\ExceptionHelper.cs" />
+    <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\BinarySerialization.cs" />
     <Compile Include="Serialization\JsonSerialization.cs" />
     <Compile Include="Serialization\XmlSerialization.cs" />
     <Compile Include="Threading\RunFunctionWithTimeout.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="DansCSharpLibraryStronglyNamedKey.snk" />
     <None Include="packages.config" />
