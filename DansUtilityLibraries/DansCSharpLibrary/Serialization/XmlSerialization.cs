@@ -63,5 +63,32 @@ namespace DansCSharpLibrary.Serialization
 					reader.Close();
 			}
 		}
+
+        /// <summary>
+        /// Serializes the instance to an XML string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance">The instance to serialize.</param>
+        /// <returns></returns>
+        public static string SerializeToString<T>(T instance)
+        {
+            var xmlSerializer = new XmlSerializer(instance.GetType());
+            var textWriter = new StringWriter();
+            xmlSerializer.Serialize(textWriter, instance);
+            return textWriter.ToString();
+        }
+
+        /// <summary>
+        /// Deserializes an instance from the given XML string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instanceString">The instance XML string.</param>
+        /// <returns></returns>
+        public static T DeserializeFromString<T>(string instanceString)
+        {
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            var textReader = new StringReader(instanceString);
+            return (T)xmlSerializer.Deserialize(textReader);
+        }
 	}
 }

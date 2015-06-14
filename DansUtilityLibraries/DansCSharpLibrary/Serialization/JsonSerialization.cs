@@ -64,5 +64,27 @@ namespace DansCSharpLibrary.Serialization
 					reader.Close();
 			}
 		}
+
+		/// <summary>
+		/// Serializes the instance to a JSON string.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="instance">The instance to serialize.</param>
+		/// <returns></returns>
+		public static string SerializeToString<T>(T instance)
+		{
+			return JsonConvert.SerializeObject(instance);
+		}
+
+		/// <summary>
+		/// Deserializes an instance from the given JSON string.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="instanceString">The instance XML string.</param>
+		/// <returns></returns>
+		public static T DeserializeFromString<T>(string instanceString)
+		{
+			return JsonConvert.DeserializeObject<T>(instanceString);
+		}
 	}
 }
