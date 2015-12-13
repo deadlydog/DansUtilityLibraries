@@ -7,23 +7,26 @@ namespace DansCSharpLibrary.Extensions
 {
 	public static class TimeSpanExtensions
 	{
-		public static string HumanFriendlyString(this TimeSpan timeSpan)
+		/// <summary>
+		/// Gets the TimeSpan as a human-friendly readable string.
+		/// </summary>
+		/// <param name="timeSpan">The time span.</param>
+		public static string AsHumanFriendlyString(this TimeSpan timeSpan)
 		{
 			string timeSpanString = string.Empty;
 			if (timeSpan.Days > 0)
-				timeSpanString += string.Format("{0} day(s), ", timeSpan.Days.ToString());
+				timeSpanString += $"{timeSpan.Days.ToString()} day(s), ";
 			if (timeSpan.Hours > 0)
-				timeSpanString += string.Format("{0} hour(s), ", timeSpan.Hours.ToString());
+				timeSpanString += $"{timeSpan.Hours.ToString()} hour(s), ";
 			if (timeSpan.Minutes > 0)
-				timeSpanString += string.Format("{0} minute(s) and ", timeSpan.Minutes.ToString());
+				timeSpanString += $"{timeSpan.Minutes.ToString()} minute(s) and ";
 			if (timeSpan.TotalSeconds > 10)
-				timeSpanString += string.Format("{0} seconds", timeSpan.Seconds.ToString());
+				timeSpanString += $"{timeSpan.Seconds.ToString()} seconds";
 			else if (timeSpan.TotalSeconds > 1)
-				timeSpanString += string.Format("{0} seconds", (timeSpan.TotalSeconds - (timeSpan.Minutes * 60)).ToString("0.#"));
+				timeSpanString += $"{(timeSpan.TotalSeconds - (timeSpan.Minutes * 60)).ToString("0.#")} seconds";
 			// Make sure we display the time properly, even for super fast operations that took a fraction of a second to complete.
 			else
-				timeSpanString += string.Format("{0} seconds", (timeSpan.TotalSeconds - (timeSpan.Minutes * 60)).ToString("0.###"));
-
+				timeSpanString += $"{(timeSpan.TotalSeconds - (timeSpan.Minutes * 60)).ToString("0.###")} seconds";
 			return timeSpanString;
 		}
 	}

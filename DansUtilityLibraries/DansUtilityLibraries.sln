@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansWPFLibrary", "DansWPFLibrary\DansWPFLibrary.csproj", "{6CA189FA-8BFA-4156-8523-889874B81E0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansCSharpLibrary", "DansCSharpLibrary\DansCSharpLibrary.csproj", "{75268436-2C52-4133-A8ED-62A224EAD74C}"

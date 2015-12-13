@@ -48,37 +48,37 @@ namespace DansCSharpLibrary.Serialization
 			}
 		}
 
-        /// <summary>
-        /// Serializes the given instance to a string.
-        /// </summary>
-        /// <param name="instance">The instance.</param>
-        /// <returns></returns>
-        public static string SerializeToString<T>(T instance)
-        {
-            using (var stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, instance);
-                stream.Flush();
-                stream.Position = 0;
-                return Convert.ToBase64String(stream.ToArray());
-            }
-        }
+		/// <summary>
+		/// Serializes the given instance to a string.
+		/// </summary>
+		/// <param name="instance">The instance.</param>
+		/// <returns></returns>
+		public static string SerializeToString<T>(T instance)
+		{
+			using (var stream = new MemoryStream())
+			{
+				var formatter = new BinaryFormatter();
+				formatter.Serialize(stream, instance);
+				stream.Flush();
+				stream.Position = 0;
+				return Convert.ToBase64String(stream.ToArray());
+			}
+		}
 
-        /// <summary>
-        /// Deserializes a new instance from the given serialized string.
-        /// </summary>
-        /// <param name="instanceString">The instance string.</param>
-        /// <returns></returns>
-        public static T DeserializeFromString<T>(string instanceString)
-        {
-            byte[] byteArray = Convert.FromBase64String(instanceString);
-            using (var stream = new MemoryStream(byteArray))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Seek(0, SeekOrigin.Begin);
-                return (T)formatter.Deserialize(stream);
-            }
-        }
+		/// <summary>
+		/// Deserializes a new instance from the given serialized string.
+		/// </summary>
+		/// <param name="instanceString">The instance string.</param>
+		/// <returns></returns>
+		public static T DeserializeFromString<T>(string instanceString)
+		{
+			byte[] byteArray = Convert.FromBase64String(instanceString);
+			using (var stream = new MemoryStream(byteArray))
+			{
+				var formatter = new BinaryFormatter();
+				stream.Seek(0, SeekOrigin.Begin);
+				return (T)formatter.Deserialize(stream);
+			}
+		}
 	}
 }
