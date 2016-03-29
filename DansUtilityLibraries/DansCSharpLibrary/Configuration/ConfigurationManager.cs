@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DansCSharpLibrary.Extensions;
 
 namespace DansCSharpLibrary.Configuration
 {
@@ -21,47 +22,28 @@ namespace DansCSharpLibrary.Configuration
 			}
 			catch (Exception ex)
 			{
-				var errorMessage = string.Format("Could not find the appSetting key '{0}' in the app/web.config file.", appSettingKey);
+				var errorMessage = $"Could not find the appSetting key '{appSettingKey}' in the app/web.config file.";
 				throw new System.Configuration.ConfigurationErrorsException(errorMessage, ex);
 			}
 		}
 
 		/// <summary>
-		/// Gets the integer value of a key in the appSettings section of the app/web.config file, or throws a System.Configuration.ConfigurationErrorsException exception if it is not found or cannot be converted to an integer.
+		/// Gets the value of a key in the appSettings section of the app/web.config file, or throws a System.Configuration.ConfigurationErrorsException exception if it is not found or cannot be converted to the specified type.
 		/// </summary>
+		/// <typeparam name="T"></typeparam>
 		/// <param name="appSettingKey">Name of the application setting key in the app/web.config file.</param>
 		/// <returns></returns>
 		/// <exception cref="System.Configuration.ConfigurationErrorsException"></exception>
-		public static int GetIntValueFromConfigurationManagerAppSettings(string appSettingKey)
+		public static T GetValueFromConfigurationManagerAppSettings<T>(string appSettingKey)
 		{
 			var stringValue = GetValueFromConfigurationManagerAppSettings(appSettingKey);
 			try
 			{
-				return int.Parse(stringValue);
+				return stringValue.ConvertToOrDefault<T>();
 			}
 			catch (Exception ex)
 			{
-				var errorMessage = string.Format("Could not convert the value '{0}' of the appSetting key '{1}' in the app/web.config to an integer.", stringValue, appSettingKey);
-				throw new System.Configuration.ConfigurationErrorsException(errorMessage, ex);
-			}
-		}
-
-		/// <summary>
-		/// Gets the boolean value of a key in the appSettings section of the app/web.config file, or throws a System.Configuration.ConfigurationErrorsException exception if it is not found or cannot be converted to a boolean.
-		/// </summary>
-		/// <param name="appSettingKey">Name of the application setting key in the app/web.config file.</param>
-		/// <returns></returns>
-		/// <exception cref="System.Configuration.ConfigurationErrorsException"></exception>
-		public static bool GetBoolValueFromConfigurationManagerAppSettings(string appSettingKey)
-		{
-			var stringValue = GetValueFromConfigurationManagerAppSettings(appSettingKey);
-			try
-			{
-				return bool.Parse(stringValue);
-			}
-			catch (Exception ex)
-			{
-				var errorMessage = string.Format("Could not convert the value '{0}' of the appSetting key '{1}' in the app/web.config to a boolean.", stringValue, appSettingKey);
+				var errorMessage = $"Could not convert the value '{stringValue}' of the appSetting key '{appSettingKey}' in the app/web.config to type '{typeof(T).Name}'.";
 				throw new System.Configuration.ConfigurationErrorsException(errorMessage, ex);
 			}
 		}
@@ -81,7 +63,7 @@ namespace DansCSharpLibrary.Configuration
 			}
 			catch (Exception ex)
 			{
-				var errorMessage = string.Format("Could not find the connectionString name '{0}' in the app/web.config file.", connectionStringName);
+				var errorMessage = $"Could not find the connectionString name '{connectionStringName}' in the app/web.config file.";
 				throw new System.Configuration.ConfigurationErrorsException(errorMessage, ex);
 			}
 		}

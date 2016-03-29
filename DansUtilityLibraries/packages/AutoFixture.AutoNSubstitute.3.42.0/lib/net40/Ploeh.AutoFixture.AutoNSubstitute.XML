@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ploeh.AutoFixture.AutoNSubstitute</name>
+    </assembly>
+    <members>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization">
+            <summary>
+            Enables auto-mocking and auto-setup with NSubstitute.
+            Members of a substitute will be automatically setup to retrieve the return values from a fixture.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization"/> class.
+            </summary>
+            <remarks>Uses a new instance of <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder"/> as the builder.</remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization"/> class.
+            </summary>
+            <param name="builder">The builder to use to create specimens for this customization.</param>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.Builder">
+            <summary>
+            Gets the builder that will be added to <see cref="P:Ploeh.AutoFixture.IFixture.ResidueCollectors"/> when 
+            <see cref="M:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.Customize(Ploeh.AutoFixture.IFixture)"/> is invoked.
+            </summary>
+            <seealso cref="M:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoConfiguredNSubstituteCustomization.Customize(Ploeh.AutoFixture.IFixture)">
+            <summary>Customizes an <see cref="T:Ploeh.AutoFixture.IFixture"/> to enable auto-mocking with NSubstitute.</summary>
+            <param name="fixture">The fixture upon which to enable auto-mocking.</param>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization">
+            <summary>Enables auto-mocking with NSubstitute.</summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization"/> class.</summary>
+            <remarks>Uses a new instance of <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder"/> as the builder.</remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)">
+            <summary>Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization"/> class.</summary>
+            <param name="builder">The builder to use to create specimens for this customization.</param>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.Builder">
+            <summary>Gets the builder that will be added to <see cref="P:Ploeh.AutoFixture.IFixture.ResidueCollectors"/> when <see cref="M:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.Customize(Ploeh.AutoFixture.IFixture)"/> is invoked.</summary>
+            <seealso cref="M:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization.Customize(Ploeh.AutoFixture.IFixture)">
+            <summary>Customizes an <see cref="T:Ploeh.AutoFixture.IFixture"/> to enable auto-mocking with NSubstitute.</summary>
+            <param name="fixture">The fixture upon which to enable auto-mocking.</param>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteSealedPropertiesCommand">
+            <summary>
+            If the type of the object being substituted contains any fields and/or non-virtual/sealed
+            settable properties, this initializer will resolve them from a given context.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteSealedPropertiesCommand.Execute(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>
+            If the type of the object being substituted contains any fields and/or non-virtual/sealed
+            settable properties, this initializer will resolve them from a given context.
+            </summary>
+            <param name="specimen">The substitute object.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteSealedPropertiesCommand.NSubstituteSealedPropertySpecification.IsSatisfiedBy(System.Object)">
+            <summary>
+            Satisfied by any fields and non-virtual/sealed properties.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteSealedPropertiesCommand.NSubstituteSealedPropertySpecification.IsDynamicProxyMember(System.Reflection.FieldInfo)">
+            <summary>
+            Checks whether a <see cref="T:System.Reflection.FieldInfo"/> belongs to a dynamic proxy.
+            </summary>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteVirtualMethodsCommand">
+            <summary>
+            Sets up a substitute object's methods so that the return values will be retrieved from a fixture,
+            instead of being created directly by NSubstitute.
+            
+            This will setup any non-void virtual methods.
+            </summary>
+            <remarks>
+            This will setup any non-void virtual methods.
+            This includes:
+             - interface's methods/property getters;
+             - class's abstract/virtual/overridden/non-sealed methods/property getters.
+            
+            Notes:
+            - Automatic mocking of generic methods isn't feasible - we'd have to antecipate any type 
+                parameters that this method could be called with. 
+            - Void methods are not set up due to a limitation in NSubstitute that When..Do setups can't be overriden
+            - Calling a method more than once with the same parameters will always return the same value
+            - Methods inherited from <see cref="T:System.Object" /> are not set up due to a limitation in NSubstitute
+                (http://stackoverflow.com/a/21787891)
+            </remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteVirtualMethodsCommand.Execute(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>
+            Sets up a substitute object's methods so that the return values will be retrieved from a fixture,
+            instead of being created directly by NSubstitute.
+            </summary>
+            <param name="specimen">The substitute to setup.</param>
+            <param name="context">The context of the specimen.</param>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder">
+            <summary>Provides pre- and post-condition checks for requests for substituted instances.</summary>
+            <seealso cref="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)">
+            <summary>Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder"/> class with an
+                <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilder"/> to decorate.</summary>
+            <param name="builder">The builder which must build mock instances.</param>
+            <remarks>
+                <paramref name="builder"/> is subsequently available through the <see cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Builder"/> property.
+            </remarks>
+            <seealso cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Builder"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder,Ploeh.AutoFixture.Kernel.IRequestSpecification)">
+            <summary>Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder"/> class with an
+                <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilder"/> to decorate.</summary>
+            <param name="builder">The builder which must build mock instances.</param>
+            <param name="substitutionSpecification">A specification that determines whether a substitute should be created for a given request or not.</param>
+            <remarks>
+                <para><paramref name="builder"/> is subsequently available through the <see cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Builder"/> property.</para>
+                <para><paramref name="substitutionSpecification"/> is subsequently available through the <see cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.SubstitutionSpecification"/> property.</para>
+            </remarks>
+            <seealso cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Builder"/>
+            <seealso cref="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.SubstitutionSpecification"/>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Builder">
+            <summary>Gets the decorated builder supplied through the constructor.</summary>
+            <seealso cref="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)"/>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.SubstitutionSpecification">
+            <summary>Gets a specification that determines whether a substitute should be created for a given request.</summary>
+            <remarks>
+                <para>
+                    By default it only returns <see langword="true"/> for interfaces and abstract classes, but a different specification can be supplied by using the
+                    <see cref="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder,Ploeh.AutoFixture.Kernel.IRequestSpecification)"/> overloaded constructor that takes a specification as input. In that case, this
+                    property returns the specification supplied to the constructor.
+                </para>
+            </remarks>
+            <seealso cref="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder,Ploeh.AutoFixture.Kernel.IRequestSpecification)"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteBuilder.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>Creates a new specimen based on a request.</summary>
+            <param name="request">The request that describes what to create.</param>
+            <param name="context">A context that can be used to create other specimens.</param>
+            <returns>The requested specimen if possible; otherwise a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.</returns>
+            <remarks>
+                If the request is not a <see cref="T:System.Type"/> or the request does not represent an interface or an abstract class, this method returns a new
+                <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/>; otherwise, it returns a substitute for the requested type.
+            </remarks>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteMethodQuery">
+            <summary>Selects appropriate methods to create substitutes.</summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.NSubstituteMethodQuery.SelectMethods(System.Type)">
+            <summary>Selects the methods for the supplied type.</summary>
+            <param name="type">The type.</param>
+            <returns>Methods for <paramref name="type"/>.</returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler">
+            <summary>
+            Creates a substitute in response to the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/>.
+            </summary>
+            <remarks>
+            This class serves as a fixture customization, responding to explicit substitute requests in the form of the
+            <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/> instances. The actual construction of the substitute is delegated to a 
+            substitute factory, responsible for invoking an appropriate constructor for the target type with
+            automatically generated arguments.
+            </remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler"/> class with the specified 
+            <paramref name="substituteFactory"/>.
+            </summary>
+            <param name="substituteFactory">
+            An <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilder"/> responsible for creating a substitute instance from a requested 
+            <see cref="T:System.Type"/>.
+            </param>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler.SubstituteFactory">
+            <summary>
+            Returns an <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilder"/> responsible for creating a substitute instance based on a target
+            <see cref="T:System.Type"/> type.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>
+            Creates a substitute when <paramref name="request"/> is an explicit <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/>.
+            </summary>
+            <returns>
+            A substitute created by the <see cref="P:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequestHandler.SubstituteFactory"/> when <paramref name="request"/> is a 
+            <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/> or <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> for all other requests.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttribute">
+            <summary>
+            An attribute that can be applied to code elements to indicate they should be auto-generated by creating a 
+            substitute.
+            </summary>
+            <remarks>
+            When this attribute is applied to a parameter in a data-driven test, such as xUnit's <code>[Theory]</code>, 
+            the test must also have a test conventions attribute that enables automatic generation of the 
+            <see cref="T:Ploeh.AutoFixture.Fixture"/> with the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.AutoNSubstituteCustomization"/>. For xUnit, this is done by deriving 
+            the test conventions attribute from the <code>AutoDataAttribute</code> supplied by the AutoFixture for xUnit.net.
+            </remarks>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttributeRelay">
+            <summary>
+            Relays a request for a code element marked with the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttribute"/> to a 
+            <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/> of element's type. 
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttributeRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>
+            Creates a relayed request based on the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttribute"/> applied to a code element and 
+            resolves it from the given <paramref name="context"/>.
+            </summary>
+            <returns>
+            A specimen resolved from the <paramref name="context"/> based on a relayed request.
+            If the <paramref name="request"/> code element does not have <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteAttribute"/> applied, 
+            returns <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/>.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRelay">
+            <summary>
+            Relays a request for an interface or an abstract class to a request for a substitute of that type.
+            </summary>
+            <remarks>
+            This class serves as a residue collector, catching unanswered requests for an instance of an abstract type and 
+            converting them to requests for a substitute of that type, dynamically generated by NSubstitute.
+            </remarks>
+            <seealso cref="P:Ploeh.AutoFixture.IFixture.ResidueCollectors"/>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
+            <summary>
+            Creates a substitute when request is an abstract type.
+            </summary>
+            <returns>
+            A substitute resolved from the <paramref name="context"/> when <paramref name="request"/> is an abstract
+            type or <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> for all other requests.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            An attempt to resolve a substitute from the <paramref name="context"/> returned an object that was not 
+            created by NSubstitute.
+            </exception>
+        </member>
+        <member name="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest">
+            <summary>
+            Defines a request for a substitute.
+            </summary>
+            <remarks>
+            Unlike some other test isolation frameworks which define types that represent the dynamically generated proxies,
+            such as Mock{T} in Moq and Fake{T} in FakeItEasy, NSubstitute does not. This class fills this gap and allows 
+            AutoFixture to distinguish an explicit request for a substitute from a request for a regular type. This is 
+            necessary to support creation of substitutes for concrete types.
+            </remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest"/> class.
+            </summary>
+            <param name="targetType">
+            A <see cref="T:System.Type"/> for which a substitute is being requested.
+            </param>
+        </member>
+        <member name="P:Ploeh.AutoFixture.AutoNSubstitute.SubstituteRequest.TargetType">
+            <summary>
+            Gets the type for which a substitute is requested.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DansCSharpTestingBundle.XUnit.NSubstitue</id>
+    <version>$version$</version>
+    <title>DansCSharpTestingBundle.XUnit.NSubstitue</title>
+    <authors>Daniel Schroeder</authors>
+    <owners>Daniel Schroeder</owners>
+    <licenseUrl>https://dansutilitylibraries.codeplex.com/license</licenseUrl>
+    <projectUrl>https://dansutilitylibraries.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple nuget package that just includes other nuget packages I use to make XUnit tests.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>Dans C Sharp Testing Bundle Dan's CSharp XUnit NSubstitute</tags>
+  </metadata>
+</package>
