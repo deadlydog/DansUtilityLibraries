@@ -10,24 +10,24 @@ namespace DansCSharpLibrary.Threading
 	public static class Tasks
 	{
 		/// <summary>
-		/// Runs the given tasks and waits for them to complete.
+		/// Runs the given tasks and waits for them to complete. This will run, at most, the specified number of tasks in parallel.
 		/// </summary>
 		/// <param name="tasksToRun">The tasks to run.</param>
-		/// <param name="maxTasksToRunInParallel">The maximum tasks to run in parallel.</param>
+		/// <param name="maxTasksToRunInParallel">The maximum number of tasks to run in parallel.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static void RunThrottled(IEnumerable<Task> tasksToRun, int maxTasksToRunInParallel, CancellationToken cancellationToken = new CancellationToken())
+		public static void WaitAllThrottled(IEnumerable<Task> tasksToRun, int maxTasksToRunInParallel, CancellationToken cancellationToken = new CancellationToken())
 		{
-			RunThrottled(tasksToRun, maxTasksToRunInParallel, TimeSpan.FromMilliseconds(1), cancellationToken);
+			WaitAllThrottled(tasksToRun, maxTasksToRunInParallel, TimeSpan.FromMilliseconds(1), cancellationToken);
 		}
 
 		/// <summary>
-		/// Runs the given tasks and waits for them to complete.
+		/// Runs the given tasks and waits for them to complete. This will run, at most, the specified number of tasks in parallel.
 		/// </summary>
 		/// <param name="tasksToRun">The tasks to run.</param>
-		/// <param name="maxTasksToRunInParallel">The maximum tasks to run in parallel.</param>
+		/// <param name="maxTasksToRunInParallel">The maximum number of tasks to run in parallel.</param>
 		/// <param name="timeout">The maximum time we should allow the max tasks to run in parallel before allowing another task to start. Specify 1 millisecond to wait indefinitely.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		public static void RunThrottled(IEnumerable<Task> tasksToRun, int maxTasksToRunInParallel, TimeSpan timeout, CancellationToken cancellationToken = new CancellationToken())
+		public static void WaitAllThrottled(IEnumerable<Task> tasksToRun, int maxTasksToRunInParallel, TimeSpan timeout, CancellationToken cancellationToken = new CancellationToken())
 		{
 			// Convert to a list of tasks so that we don't enumerate over it multiple times needlessly.
 			var tasks = tasksToRun.ToList();
