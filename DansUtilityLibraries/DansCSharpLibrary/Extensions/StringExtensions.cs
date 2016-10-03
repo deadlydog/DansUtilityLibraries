@@ -85,5 +85,13 @@ namespace DansCSharpLibrary.Extensions
 
 			return value;
 		}
+
+		/// <summary>
+		/// Determines whether [contains] [the specified value].
+		/// </summary>
+		/// <param name="source">The source string.</param>
+		/// <param name="value">The value to look for in the string.</param>
+		/// <param name="stringComparison">The string comparison method to use.</param>
+		public static bool Contains(this string source, string value, StringComparison stringComparison) => source.IndexOf(value, stringComparison) >= 0;
 	}
 }
