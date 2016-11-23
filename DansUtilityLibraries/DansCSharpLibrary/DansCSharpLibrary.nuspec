@@ -1,17 +1,20 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>DansUtilityLibraries.CSharpLibrary</id>
-    <version>$version$</version>
-    <title>DansUtilityLibraries.CSharpLibrary</title>
-    <authors>Daniel Schroeder</authors>
-    <owners>Daniel Schroeder</owners>
-    <licenseUrl>https://dansutilitylibraries.codeplex.com/license</licenseUrl>
-    <projectUrl>https://dansutilitylibraries.codeplex.com/</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A collection of C# code.</description>
-    <releaseNotes></releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>Dans C Sharp Library Dan's CSharp Libraries</tags>
-  </metadata>
+	<metadata>
+		<id>DansUtilityLibraries.CSharpLibrary</id>
+		<version>$version$</version>
+		<title>DansUtilityLibraries.CSharpLibrary</title>
+		<authors>Daniel Schroeder</authors>
+		<owners>Daniel Schroeder</owners>
+		<licenseUrl>https://dansutilitylibraries.codeplex.com/license</licenseUrl>
+		<projectUrl>https://dansutilitylibraries.codeplex.com/</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>A collection of C# code.</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2013</copyright>
+		<tags>Dans C Sharp Library Dan's CSharp Libraries</tags>
+	</metadata>
+	<files>
+		<file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+	</files>
 </package>

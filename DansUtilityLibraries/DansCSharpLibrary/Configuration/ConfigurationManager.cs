@@ -39,7 +39,7 @@ namespace DansCSharpLibrary.Configuration
 			var stringValue = GetValueFromConfigurationManagerAppSettings(appSettingKey);
 			try
 			{
-				return stringValue.ConvertToOrDefault<T>();
+				return stringValue.ConvertTo<T>();
 			}
 			catch (Exception ex)
 			{

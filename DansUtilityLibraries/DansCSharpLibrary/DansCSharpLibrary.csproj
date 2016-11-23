@@ -60,6 +60,8 @@
     <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Events\DelayedEvent.cs" />
     <Compile Include="Exceptions\ExceptionHelper.cs" />
+    <Compile Include="Extensions\ActionExtensions.cs" />
+    <Compile Include="Extensions\FuncExtensions.cs" />
     <Compile Include="Extensions\SecureStringExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
